@@ -15,8 +15,6 @@ Lab cấu hình OSPF đa vùng trên 4 router (R1–R4), 1 switch Layer 2 và 3 
 ## <img width="1155" height="642" alt="Screenshot 2026-08-31 140835" src="https://github.com/user-attachments/assets/4df84680-bbe4-4d5b-a3e8-4bebcbd8dab5" />
 
 
-![Topology](images/topology.png)
-
 ## 📋 Bảng địa chỉ IP
 
 | Thiết bị | Interface | IP Address | Subnet Mask | Vùng OSPF |
