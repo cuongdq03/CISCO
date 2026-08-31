@@ -1,0 +1,293 @@
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+R4>
+R4>enable
+R4#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R4(config)#rou
+R4(config)#router ospf 1
+R4(config-router)#rou
+R4(config-router)#router-id 0.0.0.4
+R4(config-router)#net
+R4(config-router)#network 192.168.14.0 0.0.0.255 a
+R4(config-router)#network 192.168.14.0 0.0.0.255 area 1
+R4(config-router)#new
+R4(config-router)#net
+R4(config-router)#network 
+01:39:22: %OSPF-5-ADJCHG: Process 1, Nbr 0.0.0.1 on FastEthernet0/0 from LOADING to FULL, Loadinetwork 192.168.14.0 0.0.0.255 area 1
+R4(config-router)#net
+R4(config-router)#network 8.8.8.8 0.0.0.0 a
+R4(config-router)#network 8.8.8.8 0.0.0.0 area 1
+R4(config-router)#exit
+R4(config)#int fas
+R4(config)#int fastEthernet 0/0
+R4(config-if)#ip ospf pri
+R4(config-if)#ip ospf priority 0
+R4(config-if)#
+01:44:22: %OSPF-5-ADJCHG: Process 1, Nbr 0.0.0.1 on FastEthernet0/0 from LOADING to FULL, Loading Done
+
+
+
+
+
+
+
+
+
+R4 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+R4>
+R4>enable
+R4#wr
+Building configuration...
+[OK]
+R4#ping 8.8.8.8
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 8.8.8.8, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/5/17 ms
+
+R4#show ip os
+R4#show ip ospf ne
+R4#show ip ospf neighbor 
+
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+0.0.0.1           1   FULL/DR         00:00:30    192.168.14.1    FastEthernet0/0
+R4#show ip pro
+R4#show ip protocols 
+
+Routing Protocol is "ospf 1"
+  Outgoing update filter list for all interfaces is not set 
+  Incoming update filter list for all interfaces is not set 
+  Router ID 0.0.0.4
+  Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+  Maximum path: 4
+  Routing for Networks:
+    192.168.14.0 0.0.0.255 area 1
+    8.8.8.8 0.0.0.0 area 1
+  Routing Information Sources:  
+    Gateway         Distance      Last Update 
+    0.0.0.1              110      00:12:31
+    0.0.0.4              110      00:12:31
+  Distance: (default is 110)
+
+R4#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     8.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C       8.8.8.0/24 is directly connected, Loopback0
+L       8.8.8.8/32 is directly connected, Loopback0
+     172.16.0.0/24 is subnetted, 1 subnets
+O IA    172.16.1.0/24 [110/2] via 192.168.14.1, 00:17:31, FastEthernet0/0
+O IA 192.168.13.0/24 [110/6] via 192.168.14.1, 00:06:40, FastEthernet0/0
+     192.168.14.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.14.0/24 is directly connected, FastEthernet0/0
+L       192.168.14.4/32 is directly connected, FastEthernet0/0
+O IA 192.168.123.0/24 [110/51] via 192.168.14.1, 00:04:27, FastEthernet0/0
+
+R4#
+
+
+
+
+
+
+
+
+R4 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+R4>
+R4>enable
+R4#wr
+Building configuration...
+[OK]
+R4#
+
+
+
+
+
+
+
+
+R4 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+R4>
+R4>enable
+R4#show runn
+R4#show running-config 
+Building configuration...
+
+Current configuration : 821 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R4
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017IIKZ-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 8.8.8.8 255.255.255.0
+!
+interface FastEthernet0/0
+ ip address 192.168.14.4 255.255.255.0
+ ip ospf priority 0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ router-id 0.0.0.4
+ log-adjacency-changes
+ network 192.168.14.0 0.0.0.255 area 1
+ network 8.8.8.8 0.0.0.0 area 1
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+
+R4# 
