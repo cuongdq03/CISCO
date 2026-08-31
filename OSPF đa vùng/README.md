@@ -12,7 +12,8 @@ Lab cấu hình OSPF đa vùng trên 4 router (R1–R4), 1 switch Layer 2 và 3 
    - Đoạn multi-access R1–R4: **R1 luôn là DR**.
 5. Điều chỉnh cost sao cho R3 → Loopback0 của R4 đi theo đường **Serial là chính**, đường **Ethernet (qua switch) là dự phòng**.
 
-## 🗺️ Sơ đồ mạng
+## <img width="1155" height="642" alt="Screenshot 2026-08-31 140835" src="https://github.com/user-attachments/assets/4df84680-bbe4-4d5b-a3e8-4bebcbd8dab5" />
+
 
 ![Topology](images/topology.png)
 
